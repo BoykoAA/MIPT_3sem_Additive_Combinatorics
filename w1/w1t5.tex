@@ -1,0 +1,139 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[a4paper,top=1cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{url}    % package url to prevent horrible linebreaks
+
+\setlength\parindent{0pt}
+
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{conjecture}[theorem]{Гипотеза}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{example}[theorem]{Пример}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{obs}{Observation}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{summary}[theorem]{Резюме}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{case[theorem]}{Case}
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem*{theorem*}{\bf Теорема}
+\newtheorem*{lemma*}{\bf Лемма}
+\newtheorem*{definition*}{\bf Определение}
+\newtheorem*{example*}{\bf Пример}
+\newtheorem*{remark*}{\bf Замечание}
+\newtheorem*{hypothesis*}{\bf Гипотеза}
+
+
+\hypersetup{
+  colorlinks   = true,    % Colours links instead of ugly boxes
+  urlcolor     = blue,    % Colour for external hyperlinks
+  linkcolor    = blue,    % Colour of internal links
+  citecolor    = red      % Colour of citations
+}
+
+\def\N{\mathbb {N}}
+\def\Z{\mathbb {Z}}
+\def\F{\mathbb {F}}
+\def\d{\delta}
+\def\Gr{{\mathbf G}}
+\def\E{\mathbb {E}}
+\def\eps{\varepsilon}
+\def\Sym{{\rm Sym}}
+\def\FF{\widehat}
+\def\C{\mathbb{C}}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+%\author{}
+%\title{1.1 Наш первый документ}
+%\date{\today}
+
+\begin{document} % Конец преамбулы, начало текста.
+%\maketitle
+
+Бойко Александр
+\newline
+\newline
+Неделя 1, Задача 5 \newline
+Условие:
+Доказать неравенство полуаддитивности для верхней плотности Банаха :
+$$
+D^* \left( \bigcup_{j=1}^k C_j \right) \le \sum_{j=1}^k D^* (C_j) \,.
+$$
+
+\begin{proof}
+Можно заметить, что для любого $n$ и $U_1, \ldots, U_k$ выполнено неравенство \newline
+$U_1, U_2, \ldots, U_k \subset \{1, \ldots,n\}$ \newline
+
+$\frac{|U_1 \cup U_2 \cup \ldots U_k|}{n} \leq \frac{|U_1|}{n} + \frac{|U_2|}{n} + \ldots + \frac{|U_k|}{n}$ т.к Мощность объеденения не больше суммы мощностей \newline
+
+Значит, если 
+$U_i := C_i \cap \{1, \ldots, n\}$ \newline
+$C_1 \cap \{1, \ldots, n\}) \cup (C_2 \cap \{1, \ldots, n\}) \cup \ldots \cup (C_k \cap \{1,\ldots, n\}) = (C_1 \cup C_2 \cup \ldots \cup C_k) \cap \{1, \ldots, n\}$
+
+$x_n = \frac{|(C_1 \cup C_2 \cup \ldots \cup C_k) \cap \{1, \ldots, n\}|}{n}$ \newline
+
+$y_{i,n} = \frac{|C_i \cap \{1,\ldots,n\}|}{n}$ \newline
+
+Для любого $n$ верно $x_n \leq y_{1,n} + y_{2,n} + \ldots + y_{k,n} =: z_n$
+
+Нужно доказать, что:
+$\uplim\limits_{n \to \infty}{x_n} \leq \uplim\limits_{n \to \infty}{y_{1,n}} + \uplim\limits_{n \to \infty}{y_{2,n}} + \ldots + \uplim\limits_{n \to \infty}{y_{k,n}} =: z_n $ \newline
+Потому что верхние пределы --- это и есть Банаховые плотности, о которых идет речь в задаче \newline
+1) $\uplim\limits_{n \to \infty}{x_n} \leq \uplim\limits_{n \to \infty}{z_n}$, это верно потому что, $x_n \leq z_n$ \newline
+2) $\uplim\limits_{n \to \infty}{z_n} \leq \uplim\limits_{n \to \infty}{y_{1,n}} + \uplim\limits_{n \to \infty}{y_{2,n}} + \ldots + \uplim\limits_{n \to \infty}{y_{k,n}}$, верно потому что, верхний предел суммы не больше суммы верхних пределов \newline
+
+Таким образом, мы доказали, что требуется
+\end{proof}
+
+\end{document} % Конец текста.
+
