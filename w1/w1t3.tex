@@ -1,0 +1,121 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[a4paper,top=1cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{url}    % package url to prevent horrible linebreaks
+
+\setlength\parindent{0pt}
+
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{conjecture}[theorem]{Гипотеза}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{example}[theorem]{Пример}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{obs}{Observation}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{summary}[theorem]{Резюме}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{case[theorem]}{Case}
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem*{theorem*}{\bf Теорема}
+\newtheorem*{lemma*}{\bf Лемма}
+\newtheorem*{definition*}{\bf Определение}
+\newtheorem*{example*}{\bf Пример}
+\newtheorem*{remark*}{\bf Замечание}
+\newtheorem*{hypothesis*}{\bf Гипотеза}
+
+
+\hypersetup{
+  colorlinks   = true,    % Colours links instead of ugly boxes
+  urlcolor     = blue,    % Colour for external hyperlinks
+  linkcolor    = blue,    % Colour of internal links
+  citecolor    = red      % Colour of citations
+}
+
+\def\N{\mathbb {N}}
+\def\Z{\mathbb {Z}}
+\def\F{\mathbb {F}}
+\def\d{\delta}
+\def\Gr{{\mathbf G}}
+\def\E{\mathbb {E}}
+\def\eps{\varepsilon}
+\def\Sym{{\rm Sym}}
+\def\FF{\widehat}
+\def\C{\mathbb{C}}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+%\author{}
+%\title{1.1 Наш первый документ}
+%\date{\today}
+
+\begin{document} % Конец преамбулы, начало текста.
+%\maketitle
+
+Бойко Александр
+\newline
+\newline
+Неделя 1, Задача 3 \newline
+Условие:
+Пусть $q$ --- натуральное число и $E$ --- произвольное подмножество $\Z/q\Z$ такое, что для некоторого $z\neq 0$ выполнено $E+z\subseteq E$.
+Верно ли, что тогда $E=\Z/q\Z$?
+\begin{proof}
+Ответ: нет, не верно. \newline
+Приведем контрпример, предположим, что: \newline
+$q = 4$ \newline
+$z = 2$ \newline
+$E = \{0, 2\}$ \newline
+При таких данных, мы можем сделать сдиг множества на $z$ и множество перейдет само в себя и образует множество E
+
+\end{proof}
+
+\end{document} % Конец текста.
+
