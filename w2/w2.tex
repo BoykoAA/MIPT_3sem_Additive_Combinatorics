@@ -1,0 +1,230 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[a4paper,top=1cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{url}    % package url to prevent horrible linebreaks
+
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphs.standard}
+
+
+\setlength\parindent{0pt}
+
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{conjecture}[theorem]{Гипотеза}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{example}[theorem]{Пример}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{obs}{Observation}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{summary}[theorem]{Резюме}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{case[theorem]}{Case}
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem*{theorem*}{\bf Теорема}
+\newtheorem*{lemma*}{\bf Лемма}
+\newtheorem*{definition*}{\bf Определение}
+\newtheorem*{example*}{\bf Пример}
+\newtheorem*{remark*}{\bf Замечание}
+\newtheorem*{hypothesis*}{\bf Гипотеза}
+
+
+\hypersetup{
+  colorlinks   = true,    % Colours links instead of ugly boxes
+  urlcolor     = blue,    % Colour for external hyperlinks
+  linkcolor    = blue,    % Colour of internal links
+  citecolor    = red      % Colour of citations
+}
+
+\def\N{\mathbb {N}}
+\def\Z{\mathbb {Z}}
+\def\F{\mathbb {F}}
+\def\d{\delta}
+\def\Gr{{\mathbf G}}
+\def\E{\mathbb {E}}
+\def\eps{\varepsilon}
+\def\Sym{{\rm Sym}}
+\def\FF{\widehat}
+\def\C{\mathbb{C}}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+%\author{}
+%\title{1.1 Наш первый документ}
+%\date{\today}
+
+\begin{document} % Конец преамбулы, начало текста.
+%\maketitle
+
+Бойко Александр
+\newline
+\newline
+Неделя 2, Задача 1 \newline
+Условие:
+Доказать, что множество 
+$$
+\Gamma_n = \{ x^n ~:~ x\in \F^{*}_p \} \subseteq \F^{*}_p \,.
+$$
+представляет собой подгруппу по умножению ($n$ является фиксированным). 
+\begin{proof} \newline
+
+Для доказательства требуется проверить, что \newline
+1) $\Gamma$ - является подмножеством \newline
+2) $\Gamma$ - является замкнутым относительно * \newline
+3) $\Gamma$ - является замкнутым отностиельно взятия обратного элемента \newline
+
+\newline
+1) $x^n$ - это умноение элемента $x$ самого на себя $n$ раз, а следовательно, т.к. наше множество замкнуто относительно * выйти за множество таким образом нельзя $\Rightarrow \Gamma \subset \F_p^*$ \newline
+2) Нужно проверить, что $x^n * y^n \in \Gamma$ \newline
+$x^n y^n = (xy)^n$ по определению \newline
+$(xy)^n \in \Gamma$ \newline
+3) Нужно проверить, что если $x^n \in \Gamma$, то и $x^{n^{-1}} \in \Gamma$ \newline
+Пусть обратный элемент для $x$ это $y$, т.е. $xy = 1$, заметим, что $y^n \in \Gamma$, тогда $x^n y^n = (xy)^n = 1^n = 1 \Rightarrow$ обратный для $x^n$ это $y^n \in \Gamma$ \newline
+\newline
+Мы доказали все 3 пунтка и выполнили требование задачи
+
+\end{proof}
+
+Неделя 2, Задача 2 \newline
+Условие:
+Доказать, что число Рамсея $R(3,3)$ равно 6.
+\begin{proof} \newline
+Для начала давайте докажем, что $R(3,3) > 5$ это будет обозначать, что в графе $K_5$ при расскраске в 2 цвета, не найдется либо треугольника одного цвета, либо треугольника другого. Приведем в пример вот такую расскраску:
+
+
+\begin{tikzpicture}[]
+    \graph [simple, edges={thick}, clockwise] {
+        subgraph C_n [n=5, name=A, radius=2cm]; 
+
+        (A 5)[mark] --[red] (A 4)[mark],
+        (A 4)[mark] --[red] (A 3)[mark],
+        (A 3)[mark] --[red] (A 2)[mark],
+        (A 2)[mark] --[red] (A 1)[mark],
+        (A 1)[mark] --[red] (A 5)[mark],
+        A 1 -- A 3,
+        A 1 -- A 4,
+        A 2 -- A 5,
+        A 2 -- A 4,
+        A 4 -- A 2,
+        A 4 -- A 1,
+        A 5 -- A 2,
+        A 5 -- A 3,
+    };
+
+\end{tikzpicture} \newline
+
+Действительно, здесь нет ни красного треугольника, ни черного $\Rightarrow R(3,3) > 5$ \newline
+Теперь будем красить $K_6$, если у $K_5$ из каждой вершины выходить 4 ребра, то у $K_6$ по 5 ребер из каждой веришны. Можно как угодно красить 5 ребер в 2 цвета, но мы всегда получим 3 ребра одного цвета, далее будем рассматривать 3 ребра одного цвета.
+Тут возникает 2 случая. \newlline
+\newpage
+1) Между этими ребрами нашлось ребро нужного цвета (из вершины 1 выходят 3 одноцветных ребра, между веришнами 2 и 3 находится красное ребро)
+
+\begin{tikzpicture}[]
+    \graph [simple, edges={thick}, clockwise] {
+        subgraph C_n [n=4, name=A, radius=2cm]; 
+
+        (A 1)[mark] --[red] (A 2)[mark],
+        (A 1)[mark] --[red] (A 3)[mark],
+        (A 1)[mark] --[red] (A 4)[mark],
+        (A 3)[mark] --[red] (A 2)[mark],
+        (A 4)[mark] --[blue] (A 2)[mark],
+        (A 3)[mark] --[blue] (A 4)[mark],
+        
+        
+    };
+
+\end{tikzpicture} \newline
+
+В этом случае, нас все устраивает, и красный треугольник нашелся.  \newline
+2) Предположим, что ребро не нашлось. Тогда ребра, которые окрашены в другой цвет так же образуют треугольник \newline
+
+\begin{tikzpicture}[]
+    \graph [simple, edges={thick}, clockwise] {
+        subgraph C_n [n=4, name=A, radius=2cm]; 
+
+        (A 1)[mark] --[red] (A 2)[mark],
+        (A 1)[mark] --[red] (A 3)[mark],
+        (A 1)[mark] --[red] (A 4)[mark],
+        (A 3)[mark] --[blue] (A 2)[mark],
+        (A 3)[mark] --[blue] (A 4)[mark],
+        (A 4)[mark] --[blue] (A 2)[mark],
+        
+    };
+
+\end{tikzpicture} \newline
+
+Таким образом, мы можем найти синий треугольник. \newline
+В обоих случаях мы можем найти треугольник либо красного, либо синего цвета.
+
+
+
+\end{proof}
+
+Неделя 2, Задача 4 \newline
+Условие:
+Верно ли, что произвольное множество $A\subseteq \N$ имеющее
+положительную верхнюю плотность, содержит бесконечную арифметическую прогрессию?
+\newline
+Нет, не верно.\newline
+Приведем пример: \newline
+Построим множество по следующему принципу, $\{k(k+1)+1, k(k+1)+2,\ldots,k(k+1)+k+1\}$ \newline
+для всех целых неотрицательных k \newline
+$C = \{1,3,4,7,8,9,13,14,15,16,21,22,23,24,25 \ldots \} $ \newline
+Банахова плотность этого множетсва положительна \newline
+$\forall n;  x_n = \frac{|C \cap \{1,2,\ldots,n\}|}{n} \geq \frac{1}{2} > 0$ \newline
+Потому что, верхний предел которой берётся в определении банаховой плотности, не меньше $1/2$ для всех n \newline
+Пусть есть прогрессия c шагом $d$ \newline
+$a,a + d,a + 2d, \ldots$ тогда найдутся $d$ подряд идущих чисел, не лежащих в последовательнсоти, больших $a$. Так мы показали, что множество $C\subseteq \N$ имеющее положительную верхнюю плотность, не содержит бесконечную арифметическую прогрессию
+
+
+
+\end{document} % Конец текста.
+
