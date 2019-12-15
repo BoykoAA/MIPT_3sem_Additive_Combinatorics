@@ -1,0 +1,151 @@
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[a4paper,top=1cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{tikz}
+\thispagestyle{empty}
+\usetikzlibrary{
+  graphs,
+  graphs.standard
+}
+\usepackage{etoolbox}
+\usepackage{url}    % package url to prevent horrible linebreaks
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc}
+
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphs.standard}
+
+
+\setlength\parindent{0pt}
+
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{conjecture}[theorem]{Гипотеза}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Определение}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{example}[theorem]{Пример}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{obs}{Observation}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{summary}[theorem]{Резюме}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{case[theorem]}{Case}
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem*{theorem*}{\bf Теорема}
+\newtheorem*{lemma*}{\bf Лемма}
+\newtheorem*{definition*}{\bf Определение}
+\newtheorem*{example*}{\bf Пример}
+\newtheorem*{remark*}{\bf Замечание}
+\newtheorem*{hypothesis*}{\bf Гипотеза}
+
+
+\hypersetup{
+  colorlinks   = true,    % Colours links instead of ugly boxes
+  urlcolor     = blue,    % Colour for external hyperlinks
+  linkcolor    = blue,    % Colour of internal links
+  citecolor    = red      % Colour of citations
+}
+
+\def\N{\mathbb {N}}
+\def\Z{\mathbb {Z}}
+\def\F{\mathbb {F}}
+\def\d{\delta}
+\def\Gr{{\mathbf G}}
+\def\E{\mathbb {E}}
+\def\eps{\varepsilon}
+\def\Sym{{\rm Sym}}
+\def\FF{\widehat}
+\def\C{\mathbb{C}}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+
+%\author{}
+%\title{1.1 Наш первый документ}
+%\date{\today}
+
+\begin{document} % Конец преамбулы, начало текста.
+%\maketitle
+
+Бойко Александр
+\newline
+\newline
+Неделя 5, Задача 1 \newline
+Условие. Построить множество $A \subseteq \F_2^n$
+такое, что $|A| = 2^{n-1}$ и $A$ не содержит
+нетривиальных решений уравнения $x+y+z = 0$.
+Этот пример показывает, что если задача неафинна, то
+могут существовать очень большие множества без
+решений соответствующего линейного уравне \newline
+Решение: \newline
+Рассмотрим множетсва как векторы их чисел и возьмем только те векторы, в которых нечетное кол-во единиц и $2^{n-1}$ штука, докажем это
+\begin{proof}
+$$C_n^0 + C_n^2 + C_n^4 + \ldots = C_n^1 + C_n^3 + C_n^5 + \ldots$$
+$$(a+b)^n = \sum_{k=0}^n a^k \cdot b^{n-k} \cdot C_n^k$$
+$a=1, b=-1$
+$$0^n = (-1)^0 \cdot 1^n \cdot C_n^0 + (-1)^1 \cdot 1^{n-1} \cdot C_n^1 +(-1)^2 \cdot 1^{n-2} \cdot C_n^2 + \ldots = C_n^0 + C_n^1 + C_n^2 - C_n^3 + \ldots$$
+Следовательно четных и нечетных поровну \Rightarrow нечетных $2^{n-1}$
+\end{proof}
+Введем вспомогательный вектор $$e = (1,1,1, \ldots , 1)$$
+Тогда, $\forall a \in A: (a,e) = 1$ \newline
+Пусть $x,y,z \in A; x+y+z=0$ \newline
+$$0 = (0,e) = (x+y+z, e) = (x,e) + (y,e) + (z,e) = 1+1+1 = 1$$
+Получили противоречие \newline
+Задача 2 \newline
+Условие.Найти множество $A \subseteq (\Z/3\Z)^n$ такое, что $|A| \ge 2^n$ и $A$ не содержит нетривиальных решений уравнения $x+y = 2$ \newline
+Решение. \newline
+Рассмотрим множество $A$ в котором на каждой позиции вектора 0 или 1, в нем $2^N$ элементов (на каждую позицию 2 варианта, а позиций $N$). \newline
+Проверим, что нет нетривиальных решений. \newline
+Допустим есть какое-то нетривиальных нетривиальное. \newline
+Докажем, что $x, y$ различны. Если бы $x, y$ совпадают, то и $z$ совпадал бы с ними, тогда было бы тривиальным. \newline
+Они отличаются, тогда когда найдется позиция вектора, где на месте одного единица, а на месте другого ноль, тогда $x+y$ точно равно $1$, тогда $z=2$, а это противоречие.
+
+
+\end{document} % Конец текста.
+
